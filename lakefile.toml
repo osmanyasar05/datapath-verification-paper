@@ -1,0 +1,11 @@
+name = "DatapathVerification"
+version = "0.1.0"
+defaultTargets = ["datapathverification"]
+
+[[lean_lib]]
+name = "DatapathVerification"
+
+[[require]]
+name = "Blase"
+git = { url = "https://github.com/opencompl/lean-mlir", subDir = "Blase/" }
+rev = "main"
