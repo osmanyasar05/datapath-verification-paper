@@ -86,6 +86,7 @@ def chain {w n : Nat} (v : Vector (BitVec w) n) : CSAResult w :=
 theorem b1_add_b2_eq_add_zero {w : Nat} (b1 b2 : BitVec w) : b1 + b2 = b1 + b2 + 0 := by
   simp only [BitVec.ofNat_eq_ofNat, BitVec.add_zero]
 
+-- Sum all elements of a vector of BitVectors.
 def vector_sum {w n : Nat} (v : Vector (BitVec w) n) : BitVec w :=
   match n with
   | 0 => 0
@@ -100,6 +101,7 @@ theorem vector_sum_cast {w n m : Nat} (h : n = m) (v : Vector (BitVec w) n) :
   subst h
   rfl
 
+-- Main correctness theorem for N:2 compressor chain.
 theorem chain_correct {w n : Nat} (v : Vector (BitVec w) n) :
     let ⟨s, t⟩ := chain v
     vector_sum v = s + t <<< 1 := by
